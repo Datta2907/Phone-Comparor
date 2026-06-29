@@ -4,23 +4,35 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^1.19.0",
     "concurrently": "^6.1.0",
     "config": "^3.3.6",
     "dotenv": "^16.4.3",
-    "express": "^4.17.1",
+    "express": "^4.22.2",
+    "helmet": "^8.2.0",
     "jquery": "^3.6.0",
+    "jsonwebtoken": "^9.0.3",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.8",
+    "morgan": "^1.11.0",
     "nodemon": "^3.0.3"
   },
   "scripts": {
-    "start": "node app",
-    "server": "nodemon app",
-    "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^26.0.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^6.0.3"
+  }
 }
