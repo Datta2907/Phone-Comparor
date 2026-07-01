@@ -1,6 +1,19 @@
-import * as mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
+import { IUser } from './User';
+import { REPORT_USER_STATUS } from '../utils/constants';
 
-const reportUserSchema = new mongoose.Schema({
+export type ReportUserRole = typeof REPORT_USER_STATUS;
+
+export interface IReportUser extends Document {
+    complainant: string | IUser;
+    reporter: string | IUser;
+    description: string;
+    status: ReportUserRole;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
+
+const reportUserSchema = new Schema({
     complainant: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
@@ -19,12 +32,13 @@ const reportUserSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'reviewed', 'resolved'],
-        default: 'pending',
+        enum: Object.values(REPORT_USER_STATUS),
+        default: REPORT_USER_STATUS.PENDING,
         index: true
     }
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('reportuser', reportUserSchema);
+const ReportUser = mongoose.model<IReportUser>('ReportUser', reportUserSchema);
+export default ReportUser;

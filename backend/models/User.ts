@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { ROLES } from '../utils/constants';
+import { ROLES, USER_LOGIN_METHODS } from '../utils/constants';
 
 export interface IUser extends Document {
     name: string;
@@ -40,8 +40,8 @@ const userSchema = new Schema({
     },
     provider: {
         type: String,
-        enum: ['local', 'google', 'facebook', 'apple'],
-        default: 'local'
+        enum: Object.values(USER_LOGIN_METHODS),
+        default: USER_LOGIN_METHODS.LOCAL
     },
     providerId: {
         type: String,

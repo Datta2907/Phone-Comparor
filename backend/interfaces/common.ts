@@ -12,3 +12,11 @@ export interface IErrorResponse {
     data?: any;
     stack?: string;
 }
+
+export interface IApiResponse<T = any> {
+    status: 'success' | 'fail' | 'error';
+    statusCode: number;
+    message: string;
+    results?: number;
+    data: T;
+}

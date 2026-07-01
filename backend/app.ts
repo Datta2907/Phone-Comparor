@@ -46,6 +46,7 @@ app.get('/health', (req, res) => {
 
 app.use('/api/v1/auth', require('./routes/auth'));
 app.use('/api/v1/user', require('./routes/user'));
+app.use('/api/v1/phone', require('./routes/phone'));
 
 app.use('*', (req, res, next) => {
     res.status(HTTP_STATUS.NOT_FOUND).json({

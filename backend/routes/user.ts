@@ -11,10 +11,6 @@ router.get('/ai-analysis', restrictTo(ROLES.PREMIUM, ROLES.ADMIN), phoneControll
 
 router.post('/add-phone', restrictTo(ROLES.ADMIN), phoneController.register);
 
-router.post('/update-phone/:id', restrictTo(ROLES.ADMIN), phoneController.register);
-
-router.post('/delete-phone/:id', restrictTo(ROLES.ADMIN), phoneController.register);
-
 router.delete('/:id', restrictTo(ROLES.ADMIN), phoneController.register);
 
 export default router

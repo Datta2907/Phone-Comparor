@@ -20,7 +20,21 @@ export const ROLES = Object.freeze({
     CLIENT: 'client'
 });
 
-module.exports = {
-    ENVIRONMENTS,
-    HTTP_STATUS
-};
+export const REPORT_PHONE_STATUS = Object.freeze({
+    PENDING: 'pending',
+    RESOLVED: 'resolved',
+    REVIEWED: 'reviewed'
+});
+
+export const REPORT_USER_STATUS = Object.freeze({
+    PENDING: 'pending',
+    RESOLVED: 'resolved',
+    REVIEWED: 'reviewed'
+});
+
+export const USER_LOGIN_METHODS = Object.freeze({
+    LOCAL: 'local',
+    GOOGLE: 'google',
+    FACEBOOK: 'facebook',
+    APPLE: 'apple'
+});

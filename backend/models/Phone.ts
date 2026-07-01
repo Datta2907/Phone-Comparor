@@ -1,6 +1,30 @@
-import * as mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
+import { IUser } from './User';
 
-const phoneSchema = new mongoose.Schema({
+export interface IPhone extends Document {
+    name: string;
+    network: string;
+    photo: string;
+    launch: string;
+    dimensions: string;
+    sims: string;
+    display: string;
+    size: string;
+    resolution: string;
+    os: string;
+    chipset: string;
+    gpu: string;
+    cpu: string;
+    storage: string;
+    frontcamera: string;
+    backcamera: string;
+    video: string;
+    battery: string;
+    colors: string;
+    createdBy: string | IUser
+}
+
+const phoneSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Phone name is required'],
@@ -35,4 +59,5 @@ const phoneSchema = new mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Phone', phoneSchema);
+const Phone = mongoose.model<IPhone>('Phone', phoneSchema);
+export default Phone;
